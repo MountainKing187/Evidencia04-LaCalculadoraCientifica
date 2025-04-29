@@ -16,4 +16,14 @@ public class CalculadoraCientifica {
 
         return new double[]{x, y};
     }
+
+    public static double[] calcularEcuacionRecta(double x1, double y1, double x2, double y2) {
+        // Calcular pendiente (m)
+        double m = (y2 - y1) / (x2 - x1);
+
+        // Calcular intercepto (b) usando y = mx + b => b = y - mx
+        double b = y1 - m * x1;
+
+        return new double[]{m, b};
+    }
 }
