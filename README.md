@@ -1,5 +1,9 @@
 Evidencia04 - La Calculadora Cientifica
 Por Gabriel Valenzuela y Gabriel Vergara
+
+Gabriel Vergara: Hara las funciones 5,4 y 3 con sus tests respectivas
+Gabriel Valenzuela: Hara las funciones 1, 2 con sus tests respectivas y el menu
+
 Objetivo: Se le pide desarrollar un programa en LDP Java que permita simular una calculadora. La idea es experimentar con tipos de datos, validación de entradas, gestión de errores y versionado del código con GitHub.
 
 Ud. y otr@ estudiante, trabajan en conjunto (máx. 3).
@@ -21,4 +25,3 @@ Ax + By = C
 Dx + Ey = F
 
 5- calcular la ecuación de una recta de la forma: Y = mX + b, dados 2 puntos de la recta (x1,y1) (x2,y2) 
-
