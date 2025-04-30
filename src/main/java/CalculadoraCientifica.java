@@ -1,3 +1,4 @@
+import java.awt.geom.Area;
 import java.util.Scanner;
 
 public class CalculadoraCientifica {
@@ -59,9 +60,9 @@ public class CalculadoraCientifica {
         switch (opcion) {
             case 1 -> operacionAritmetica();
             case 2 -> ecuacionCuadratica();
-//            case 3 -> figuraGeometrica();
+            case 3 -> figuraGeometrica();
             case 4 -> sistOperacionesLineales();
-//            case 5 -> ecuacionRecta();
+            case 5 -> opcionEcuacionRecta();
             case 6 -> System.exit(1);
             default -> System.out.println("Opcion invalida");
         }
@@ -237,6 +238,9 @@ public class CalculadoraCientifica {
         double C = escribirDouble();
         return new double[]{A,B,C};
     }
+
+
+
     public static double[] resolverSistema(double A, double B, double C,
                                            double D, double E, double F) {
         // Calculamos el determinante del sistema
@@ -254,6 +258,28 @@ public class CalculadoraCientifica {
         return new double[]{x, y};
     }
 
+    public static void opcionEcuacionRecta(){
+        double[] puntos = obtenerPuntos();
+
+        double[] bym = calcularEcuacionRecta(puntos[0],puntos[1],puntos[2],puntos[3]);
+
+        System.out.println("Su ecuacion de la recta es:");
+        System.out.println("y = "+bym[0]+" * x + "+bym[1]);
+    }
+
+    public static double[] obtenerPuntos() {
+        System.out.println("Ingrese el X del primer punto");
+        double n1 = escribirDouble();
+        System.out.println("Ingrese el Y del primer punto");
+        double n2 = escribirDouble();
+        System.out.println("Ingrese el X del segundo punto");
+        double n3 = escribirDouble();
+        System.out.println("Ingrese el Y del segundo punto");
+        double n4 = escribirDouble();
+
+        return new double[]{n1, n2, n3, n4};
+    }
+
     public static double[] calcularEcuacionRecta(double x1, double y1, double x2, double y2) {
         // Calcular pendiente (m)
         double m = (y2 - y1) / (x2 - x1);
@@ -262,6 +288,122 @@ public class CalculadoraCientifica {
         double b = y1 - m * x1;
 
         return new double[]{m, b};
+    }
+
+    public static void figuraGeometrica(){
+        mostrarFiguras();
+        int opcion = escribirInt();
+
+        switch (opcion){
+            case 1 -> opcionCuadrado();
+            case 2 -> opcionRectangulo();
+            case 3 -> opcionCirculo();
+            case 4 -> opcionEsfera();
+            case 5 -> opcionCubo();
+            case 6 -> opcionCono();
+            case 7 -> menu();
+        }
+    }
+
+    public static void mostrarFiguras(){
+        System.out.println("Figuras geometricas");
+        System.out.println("1- Calcular Perimetro o Area de Cuadrado");
+        System.out.println("2- Calcular Perimetro o Area de Rectangulo");
+        System.out.println("3- Calcular Perimetro o Area de Circulo");
+        System.out.println("4- Calcular Volumen de Esfera");
+        System.out.println("5- Calcular Volumen de Cubo");
+        System.out.println("6- Calcular Volumen de Cono");
+        System.out.println("7- Volver al Menu Principal");
+        System.out.println("Selecciona una opcion:");
+    }
+
+    public static void opcionCuadrado(){
+        System.out.println("Ingrese el largo del lado de su cuadrado");
+        double n1 = escribirDouble();
+
+        System.out.println("Operaciones de un Cuadrado");
+        System.out.println("1- Calcular Perimetro");
+        System.out.println("2- Calcular Area");
+        System.out.println("Ingrese su opcion");
+        int opcion = escribirInt();
+        double resultado = 0;
+
+        switch (opcion) {
+            case 1 -> resultado = perimetroCuadrado(n1);
+            case 2 -> resultado = areaCuadrado(n1);
+            default -> System.out.println("Opcion invalida");
+        }
+        System.out.println(resultado);
+    }
+
+    public static void opcionRectangulo(){
+        System.out.println("Ingrese el largo de su rectangulo");
+        double n1 = escribirDouble();
+
+        System.out.println("Ingrese el ancho de su rectangulo");
+        double n2 = escribirDouble();
+
+        System.out.println("Operaciones de un Rectangulo");
+        System.out.println("1- Calcular Perimetro");
+        System.out.println("2- Calcular Area");
+        System.out.println("Ingrese su opcion");
+        int opcion = escribirInt();
+        double resultado = 0;
+
+        switch (opcion) {
+            case 1 -> resultado = perimetroRectangulo(n1,n2);
+            case 2 -> resultado = areaRectangulo(n1,n2);
+            default -> System.out.println("Opcion invalida");
+        }
+        System.out.println(resultado);
+    }
+    public static void opcionCirculo(){
+        System.out.println("Ingrese el largo del radio de su circulo");
+        double n1 = escribirDouble();
+
+        System.out.println("Operaciones de un Circulo");
+        System.out.println("1- Calcular Perimetro");
+        System.out.println("2- Calcular Area");
+        System.out.println("Ingrese su opcion");
+        int opcion = escribirInt();
+        double resultado = 0;
+
+        switch (opcion) {
+            case 1 -> resultado = perimetroCirculo(n1);
+            case 2 -> resultado = areaCirculo(n1);
+            default -> System.out.println("Opcion invalida");
+        }
+        System.out.println(resultado);
+    }
+
+    public static void opcionCubo(){
+        System.out.println("Ingrese el largo de un lado de su cubo");
+        double n1 = escribirDouble();
+        double resultado = 0;
+
+        resultado = volumenCubo(n1);
+        System.out.println(resultado);
+    }
+
+    public static void opcionEsfera(){
+        System.out.println("Ingrese el largo del radio de su esfera");
+        double n1 = escribirDouble();
+        double resultado = 0;
+
+        resultado = volumenEsfera(n1);
+        System.out.println(resultado);
+    }
+
+    public static void opcionCono(){
+        System.out.println("Ingrese el radio de la base de su cono");
+        double n1 = escribirDouble();
+
+        System.out.println("Ingrese el largo de su cono");
+        double n2 = escribirDouble();
+
+        double resultado = 0;
+        resultado = volumenCono(n1,n2);
+        System.out.println(resultado);
     }
 
     public static double perimetroCuadrado(double lado) {
