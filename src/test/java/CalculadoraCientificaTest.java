@@ -2,6 +2,69 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CalculadoraCientificaTest {
+    //Test para Aritmeticas
+    @Test
+    public void testSumaAritmetica() {
+        assertEquals(5.0, CalculadoraCientifica.sumaAritmetica(2, 3), 0.0001);
+    }
+
+    @Test
+    public void testOperacionesAritmetica() {
+        assertEquals(5.0, CalculadoraCientifica.sumaAritmetica(2, 3), 0.0001);
+        assertEquals(2.0, CalculadoraCientifica.restaAritmetica(5, 3), 0.0001);
+        assertEquals(6.0, CalculadoraCientifica.multiplicacionAritmetica(2, 3), 0.0001);
+        assertEquals(2.0, CalculadoraCientifica.divisionAritmetica(6, 3), 0.0001);
+        assertTrue(Double.isNaN(CalculadoraCientifica.divisionAritmetica(4,0)));
+    }
+
+
+    @Test
+    public void testMayorAritmetica() {
+        assertEquals(10.0, CalculadoraCientifica.mayorAritmetica(10, 5), 0.0001);
+        assertEquals(7.0, CalculadoraCientifica.mayorAritmetica(3, 7), 0.0001);
+    }
+
+    @Test
+    public void testMenorAritmetica() {
+        assertEquals(3.0, CalculadoraCientifica.menorAritmetica(3, 9), 0.0001);
+        assertEquals(2.0, CalculadoraCientifica.menorAritmetica(6, 2), 0.0001);
+    }
+
+    @Test
+    public void testPotenciaAritmetica() {
+        assertEquals(8.0, CalculadoraCientifica.potenciaAritmetica(2, 3), 0.0001);
+        assertEquals(1.0, CalculadoraCientifica.potenciaAritmetica(5, 0), 0.0001);
+        assertEquals(1.0, CalculadoraCientifica.potenciaAritmetica(0, 0), 0.0001);
+        assertEquals(0.0, CalculadoraCientifica.potenciaAritmetica(0, 4), 0.0001);
+    }
+
+    @Test
+    public void testPorcentajeAritmetica() {
+        assertEquals(10.0, CalculadoraCientifica.porcentajeAritmetica(20, 50), 0.0001);
+        assertEquals(50.0, CalculadoraCientifica.porcentajeAritmetica(500, 10), 0.0001);
+    }
+
+    @Test
+    public void testResuelvaCuadratica_DosRaices() {
+        double[] result = CalculadoraCientifica.resuelvaCuadratica(1, 0, -4); // x² - 4 = 0 → x1=2, x2=1
+        assertNotNull(result);
+        assertEquals(2.0, result[0], 0.0001);
+        assertEquals(-2.0, result[1], 0.0001);
+    }
+
+    @Test
+    public void testResuelvaCuadratica_UnaRaiz() {
+        double[] result = CalculadoraCientifica.resuelvaCuadratica(1, -2, 1); // x² - 2x + 1 = 0 → x=1 doble
+        assertEquals(1.0, result[0], 0.0001);
+        assertEquals(1.0, result[1], 0.0001);
+    }
+
+    @Test
+    public void testResuelvaCuadratica_SinRaicesReales() {
+        double[] result = CalculadoraCientifica.resuelvaCuadratica(1, 2, 5); // x² + 2x + 5 → raíces complejas
+        assertTrue(Double.isNaN(result[0]));
+        assertTrue(Double.isNaN(result[1]));
+    }
 
     //Tests para resolver los sistemas 2x2
     @Test
