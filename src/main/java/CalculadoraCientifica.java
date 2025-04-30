@@ -1,4 +1,3 @@
-import javax.print.attribute.standard.MediaSize;
 import java.util.Scanner;
 
 public class CalculadoraCientifica {
@@ -92,7 +91,7 @@ public class CalculadoraCientifica {
     }
 
     public static void opcionMenuAritmetica(int opcion){
-        switch (opcion) {case 9: menu(); break;}
+        if (opcion == 9) {menu();}
         System.out.println("Ingrese el primer numero");
         double n1 = escribirDouble();
         System.out.println("Ingrese el segundo numero");
@@ -124,7 +123,7 @@ public class CalculadoraCientifica {
                 System.out.println("La multiplicacion da total " + n3);
                 break;
             case 4:
-                if (n3 == Double.NaN) {System.out.println("No se puede dividir 0");}
+                if (Double.isNaN(n3)) {System.out.println("No se puede dividir 0");}
                 else {System.out.println("La division da total " + n3);}
                 break;
             case 5:
@@ -156,19 +155,11 @@ public class CalculadoraCientifica {
     }
 
     public static double mayorAritmetica(double n1, double n2) {
-        if (n1 > n2) {
-            return n1;
-        } else {
-            return n2;
-        }
+        return Math.max(n1, n2);
     }
 
     public static double menorAritmetica(double n1, double n2) {
-        if (n1 < n2) {
-            return n1;
-        } else {
-            return n2;
-        }
+        return Math.min(n1, n2);
     }
 
     public static double potenciaAritmetica(double n1, double n2) {
